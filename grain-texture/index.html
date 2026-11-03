@@ -35,9 +35,9 @@ a{color:var(--acc)}
 .dlrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
 .dlcard{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden}
 .swatch{height:170px;position:relative;isolation:isolate}
-.swatch::after{content:"";position:absolute;inset:0;background:var(--g) 0 0/1024px repeat;mix-blend-mode:var(--m);opacity:var(--o)}
-.sw-white{background:linear-gradient(135deg,#2b1f55,#8a4fd0);--g:url(free/grain-texture-white-1024.png);--m:overlay;--o:.4}
-.sw-black{background:linear-gradient(135deg,#ffe9d6,#f6b7c9);--g:url(free/grain-texture-black-1024.png);--m:normal;--o:.18}
+.swatch::after{content:"";position:absolute;inset:0;background:var(--g) 0 0/256px repeat;mix-blend-mode:var(--m);opacity:var(--o)}
+.sw-white{background:linear-gradient(135deg,#2b1f55,#8a4fd0);--g:url(previews/tile-white-256.png);--m:overlay;--o:.4}
+.sw-black{background:linear-gradient(135deg,#ffe9d6,#f6b7c9);--g:url(previews/tile-black-256.png);--m:normal;--o:.18}
 .dlcard div.t{padding:12px 14px;font-size:15px}
 .btn{display:inline-block;margin:6px 10px 0 0;padding:10px 16px;border-radius:9px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600}
 .btn.alt{background:#2b2838}
@@ -73,7 +73,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em}
 <p class="mut" id="license"><small>License: free for personal and commercial projects, including client work. No attribution needed. Please don't re-share or sell the file itself as a texture or stock asset; link to this page instead.</small></p>
 
 <h2 id="preview">Preview it on your colours</h2>
-<p>This is the live texture, layered the same way the CSS below does it. Change the settings and the CSS updates to match.</p>
+<p>This uses the same grain, layered the same way as the CSS below. Change the settings and the CSS updates to match.</p>
 <div class="lab">
 <div id="stage"><div class="g" id="grain"></div><span>Grainy.</span></div>
 <div class="ctl">
@@ -147,7 +147,7 @@ function upd(){
   var tone=$('tone').value, mode=$('mode').value, op=$('op').value, sz=$('sz').value;
   $('opv').textContent=op; $('szv').textContent=sz+'px';
   $('stage').style.background='linear-gradient(135deg,'+$('c1').value+','+$('c2').value+')';
-  var g=$('grain'); g.style.background='url(free/grain-texture-'+tone+'-1024.png) 0 0/'+sz+'px repeat';
+  var g=$('grain'); g.style.background='url(previews/tile-'+tone+'-256.png) 0 0/'+(sz/4)+'px repeat'; // same grain as the 1024 file, 90 KB instead of 1.4 MB
   g.style.mixBlendMode=mode; g.style.opacity=op;
   $('css').textContent='.grainy {\n  position: relative;\n  isolation: isolate;\n  background: linear-gradient(135deg, '+$('c1').value+', '+$('c2').value+');\n}\n.grainy::after {\n  content: "";\n  position: absolute;\n  inset: 0;\n  background: url(grain-texture-'+tone+'-1024.png) 0 0 / '+sz+'px repeat;\n  mix-blend-mode: '+mode+';\n  opacity: '+op+';\n  pointer-events: none;\n}';
 }
