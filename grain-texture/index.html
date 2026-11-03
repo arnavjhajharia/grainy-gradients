@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Grain Texture PNG (Transparent, Seamless) + Live Overlay Preview</title>
+<meta name="description" content="Download a free seamless grain / noise texture PNG with a transparent background (white and black versions, 1024 px tile). Preview it on your own colours, then copy the CSS, Figma or Photoshop steps.">
+<link rel="canonical" href="https://arnavjhajharia.github.io/grainy-gradients/grain-texture/">
+<meta property="og:title" content="Free transparent grain texture PNG (seamless)">
+<meta property="og:description" content="White and black noise overlays on a transparent background, tileable, with a live blend-mode preview.">
+<meta property="og:url" content="https://arnavjhajharia.github.io/grainy-gradients/grain-texture/">
+<meta property="og:image" content="https://arnavjhajharia.github.io/grainy-gradients/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"ImageObject","name":"Seamless grain texture PNG, white on transparent","contentUrl":"https://arnavjhajharia.github.io/grainy-gradients/grain-texture/free/grain-texture-white-1024.png","width":1024,"height":1024,"encodingFormat":"image/png","license":"https://arnavjhajharia.github.io/grainy-gradients/grain-texture/#license","acquireLicensePage":"https://arnavjhajharia.github.io/grainy-gradients/grain-texture/#license","creator":{"@type":"Person","name":"Bharat Ankh"}},
+{"@type":"ImageObject","name":"Seamless grain texture PNG, black on transparent","contentUrl":"https://arnavjhajharia.github.io/grainy-gradients/grain-texture/free/grain-texture-black-1024.png","width":1024,"height":1024,"encodingFormat":"image/png","license":"https://arnavjhajharia.github.io/grainy-gradients/grain-texture/#license","acquireLicensePage":"https://arnavjhajharia.github.io/grainy-gradients/grain-texture/#license","creator":{"@type":"Person","name":"Bharat Ankh"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is this grain texture really seamless?","acceptedAnswer":{"@type":"Answer","text":"Yes. The noise is generated on a torus (in the frequency domain), so the right edge continues the left edge and the bottom continues the top. Repeat it with background-repeat or a pattern fill and there is no line at the join."}},
+{"@type":"Question","name":"White or black grain?","acceptedAnswer":{"@type":"Answer","text":"With the Overlay or Soft light blend mode either one works on any colour. With Normal blending, use white grain on dark designs and black grain on light designs, at 10-30% opacity."}},
+{"@type":"Question","name":"Can I use it commercially?","acceptedAnswer":{"@type":"Answer","text":"Yes, in personal and commercial projects, including client work, with no attribution. You may not re-share or sell the texture file itself as a texture or stock asset."}}]}
+]}
+</script>
+<style>
+:root{--ink:#16151c;--mut:#5b5868;--bg:#faf9fc;--acc:#6b4ce6}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:980px;margin:0 auto;padding:0 20px 60px}
+nav.crumb{max-width:980px;margin:0 auto;padding:14px 20px 0;font-size:14px}
+h1{margin:28px 0 6px;font-size:clamp(30px,5vw,44px);line-height:1.15;letter-spacing:-.5px}
+.lede{font-size:19px;color:var(--mut);margin:0 0 8px;max-width:760px}
+h2{margin:48px 0 8px;font-size:27px;letter-spacing:-.3px}
+h3{margin:26px 0 4px;font-size:19px}
+a{color:var(--acc)}
+.dlrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.dlcard{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden}
+.swatch{height:170px;position:relative;isolation:isolate}
+.swatch::after{content:"";position:absolute;inset:0;background:var(--g) 0 0/1024px repeat;mix-blend-mode:var(--m);opacity:var(--o)}
+.sw-white{background:linear-gradient(135deg,#2b1f55,#8a4fd0);--g:url(free/grain-texture-white-1024.png);--m:overlay;--o:.4}
+.sw-black{background:linear-gradient(135deg,#ffe9d6,#f6b7c9);--g:url(free/grain-texture-black-1024.png);--m:normal;--o:.18}
+.dlcard div.t{padding:12px 14px;font-size:15px}
+.btn{display:inline-block;margin:6px 10px 0 0;padding:10px 16px;border-radius:9px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600}
+.btn.alt{background:#2b2838}
+pre{background:#1d1b26;color:#eae6ff;padding:16px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.5;margin:10px 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em}
+.lab{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start;margin-top:16px}
+#stage{position:relative;height:340px;border-radius:14px;overflow:hidden;isolation:isolate}
+#stage .g{position:absolute;inset:0;pointer-events:none}
+#stage span{position:absolute;left:22px;bottom:18px;font:700 30px/1.1 -apple-system,Helvetica,Arial,sans-serif;color:#fff;z-index:2;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.ctl{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:14px 16px;font-size:15px}
+.ctl label{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 0}
+.ctl input[type=range]{width:55%}
+.ctl select{font-size:15px}
+.packs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.packs figure{margin:0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.packs img{display:block;width:100%;height:auto}
+.packs figcaption{padding:7px 10px;font-size:13px;color:var(--mut)}
+.cta{margin-top:40px;padding:26px;border-radius:14px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.mut,small{color:var(--mut)}
+@media (max-width:760px){.lab,.dlrow{grid-template-columns:1fr}.packs{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav class="crumb"><a href="../">Grainy gradients</a> › Grain texture PNG</nav>
+<main>
+<h1>Free grain texture PNG: transparent and seamless</h1>
+<p class="lede">A 1024 × 1024 noise overlay with a transparent background, in white and in black. It tiles with no visible seam, so it covers a background of any size. Below, preview it on your own colours, then copy the CSS or follow the Figma, Photoshop or Canva steps.</p>
+
+<div class="dlrow" id="download">
+<div class="dlcard"><div class="swatch sw-white" role="img" aria-label="White grain texture, Overlay at 40%, over a purple gradient"></div><div class="t"><strong>White grain</strong>: for dark designs, or any design with Overlay / Soft light.<br><a class="btn" href="free/grain-texture-white-1024.png" download>Download PNG (1.4 MB)</a></div></div>
+<div class="dlcard"><div class="swatch sw-black" role="img" aria-label="Black grain texture, Normal at 18%, over a peach gradient"></div><div class="t"><strong>Black grain</strong>: for light designs with Normal blending.<br><a class="btn" href="free/grain-texture-black-1024.png" download>Download PNG (1.4 MB)</a></div></div>
+</div>
+<p class="mut" id="license"><small>License: free for personal and commercial projects, including client work. No attribution needed. Please don't re-share or sell the file itself as a texture or stock asset; link to this page instead.</small></p>
+
+<h2 id="preview">Preview it on your colours</h2>
+<p>This is the live texture, layered the same way the CSS below does it. Change the settings and the CSS updates to match.</p>
+<div class="lab">
+<div id="stage"><div class="g" id="grain"></div><span>Grainy.</span></div>
+<div class="ctl">
+<label>Colour 1 <input type="color" id="c1" value="#ff7a59"></label>
+<label>Colour 2 <input type="color" id="c2" value="#5b3cc4"></label>
+<label>Grain colour <select id="tone"><option value="white">White</option><option value="black">Black</option></select></label>
+<label>Blend mode <select id="mode"><option>overlay</option><option>soft-light</option><option>normal</option><option>screen</option><option>multiply</option></select></label>
+<label>Opacity <input type="range" id="op" min="0.05" max="1" step="0.05" value="0.35"> <output id="opv">0.35</output></label>
+<label>Grain size <input type="range" id="sz" min="256" max="1024" step="128" value="1024"> <output id="szv">1024px</output></label>
+</div>
+</div>
+<pre><code id="css"></code></pre>
+<p class="mut"><small>At 1024 px each texture pixel is one CSS pixel, which is the safest default. On Retina screens, 512 px gives finer grain that is still sharp. On ordinary 1× screens, sizes below 1024 px soften the grain.</small></p>
+
+<h2 id="css-howto">How to add grain in CSS</h2>
+<p>Put the texture on a pseudo-element that sits over the element. Then the grain blends with whatever is underneath (gradient, photo or video) and never blocks clicks:</p>
+<pre><code>.grainy { position: relative; isolation: isolate; }
+.grainy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(grain-texture-white-1024.png) 0 0 / 1024px repeat;
+  mix-blend-mode: overlay;   /* or soft-light */
+  opacity: .35;
+  pointer-events: none;
+}</code></pre>
+<ul>
+<li><code>isolation: isolate</code> limits the blend to this element. Without it, Overlay also mixes with the page behind it.</li>
+<li>For a whole-page grain, use <code>position: fixed</code> on a <code>body::after</code> instead. It's one layer, so it stays cheap even on long pages.</li>
+<li>If you'd rather have no image request at all, the <a href="../#css">SVG <code>feTurbulence</code> recipe</a> generates noise inline. A PNG gives you the same grain in every browser and is lighter to repaint on large animated backgrounds.</li>
+</ul>
+
+<h2 id="figma">Figma</h2>
+<p>Add a rectangle over your design, set its fill to <em>Image</em>, choose this PNG and switch the image mode from <em>Fill</em> to <em>Tile</em>. Then set the layer blend mode (the dropdown next to layer opacity) to <strong>Overlay</strong> or <strong>Soft light</strong>, at 20–50% opacity. Figma also has a built-in <em>Noise</em> effect. The PNG is useful when you want the exact same grain in Figma and in production CSS.</p>
+
+<h2 id="photoshop">Photoshop</h2>
+<p>Open the PNG and choose <em>Edit → Define Pattern</em>. In your design, add <em>Layer → New Fill Layer → Pattern</em>, pick the grain pattern and set the layer's blend mode to Overlay or Soft light. Change <em>Scale</em> in the pattern dialog to make the grain finer or coarser. Because it's a fill layer, it extends to any canvas size with no seams.</p>
+
+<h2 id="canva">Canva, Keynote and Google Slides</h2>
+<p>Upload the PNG, place it over your design and stretch it to cover the page. Lower its transparency to around 15–35%. Use the white grain on dark designs and the black grain on light ones. If your editor offers blend modes for images, Overlay or Soft light looks best. If not, plain transparency works because the grain is already on a transparent background.</p>
+
+<h2 id="video">A note on video</h2>
+<p>A still grain image on top of moving footage looks like dust on the lens, not film grain, because real grain changes every frame. For video, offset the overlay's position randomly every frame (most editors can wiggle position), or use an animated grain clip.</p>
+
+<h2 id="pack">8 overlays at 2K–4K, if you need more than one look</h2>
+<p>The free file is the "fine grain" overlay from <strong>GRAIN + NOISE</strong>, a pack of 8 seamless transparent overlays: fine, soft, coarse and film grain at 2048 px, and paper, dust, halftone dots and scanlines at 4096 px. Each one tiles, and each is white on transparent so the blend modes above work as-is.</p>
+<div class="packs">
+<figure><img src="previews/grain-fine-grain-2k.jpg" alt="Fine grain overlay preview" width="360" height="360" loading="lazy"><figcaption>Fine grain · 2048</figcaption></figure>
+<figure><img src="previews/grain-soft-grain-2k.jpg" alt="Soft grain overlay preview" width="360" height="360" loading="lazy"><figcaption>Soft grain · 2048</figcaption></figure>
+<figure><img src="previews/grain-coarse-grain-2k.jpg" alt="Coarse grain overlay preview" width="360" height="360" loading="lazy"><figcaption>Coarse grain · 2048</figcaption></figure>
+<figure><img src="previews/grain-film-grain-mono-2k.jpg" alt="Film grain overlay preview" width="360" height="360" loading="lazy"><figcaption>Film grain · 2048</figcaption></figure>
+<figure><img src="previews/grain-paper-fiber-4k.jpg" alt="Paper texture overlay preview" width="360" height="360" loading="lazy"><figcaption>Paper · 4096</figcaption></figure>
+<figure><img src="previews/grain-dust-speckle-4k.jpg" alt="Dust speckle overlay preview" width="360" height="360" loading="lazy"><figcaption>Dust speckle · 4096</figcaption></figure>
+<figure><img src="previews/grain-halftone-dots-4k.jpg" alt="Halftone dots overlay preview" width="360" height="360" loading="lazy"><figcaption>Halftone dots · 4096</figcaption></figure>
+<figure><img src="previews/grain-scanlines-4k.jpg" alt="Scanlines overlay preview" width="360" height="360" loading="lazy"><figcaption>Scanlines · 4096</figcaption></figure>
+</div>
+<div class="cta">
+<a class="btn" href="https://bharatankh.gumroad.com/l/grain">GRAIN + NOISE, 8 overlays, $3</a>
+<a class="btn alt" href="https://bharatankh.gumroad.com/l/meshgrain">With 100 grainy gradient backgrounds, $6</a>
+<p><small>Same license as the free file: commercial use, no attribution. The overlays are generated procedurally with numpy (frequency-domain noise on a torus). They aren't AI image-model output.</small></p>
+</div>
+
+<p class="mut" style="margin-top:36px">Also free: <a href="../">grainy gradient wallpapers (4K + iPhone)</a> · <a href="https://arnavjhajharia.github.io/ogkit/">ogkit</a> (OG image maker) · <a href="https://arnavjhajharia.github.io/appshot/">AppShot</a> (App Store screenshots) · <a href="https://arnavjhajharia.github.io/favikit/">Favikit</a> (favicons)</p>
+</main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function upd(){
+  var tone=$('tone').value, mode=$('mode').value, op=$('op').value, sz=$('sz').value;
+  $('opv').textContent=op; $('szv').textContent=sz+'px';
+  $('stage').style.background='linear-gradient(135deg,'+$('c1').value+','+$('c2').value+')';
+  var g=$('grain'); g.style.background='url(free/grain-texture-'+tone+'-1024.png) 0 0/'+sz+'px repeat';
+  g.style.mixBlendMode=mode; g.style.opacity=op;
+  $('css').textContent='.grainy {\n  position: relative;\n  isolation: isolate;\n  background: linear-gradient(135deg, '+$('c1').value+', '+$('c2').value+');\n}\n.grainy::after {\n  content: "";\n  position: absolute;\n  inset: 0;\n  background: url(grain-texture-'+tone+'-1024.png) 0 0 / '+sz+'px repeat;\n  mix-blend-mode: '+mode+';\n  opacity: '+op+';\n  pointer-events: none;\n}';
+}
+['c1','c2','tone','mode','op','sz'].forEach(function(i){$(i).addEventListener('input',upd)});
+upd();
+})();
+</script>
+</body>
+</html>
